@@ -160,14 +160,17 @@ function checkLetter(buttonClicked) {
 qwerty.addEventListener('click', (e) => {
     const buttonClicked = e.target;
     const keyValue = buttonClicked.textContent;
+    const buttonClass = buttonClicked.className;
 
-    if (buttonClicked.tagName === 'BUTTON') {
+    if (buttonClicked.tagName === 'BUTTON' &&
+        buttonClass !== 'chosen') {
+
         buttonClicked.className = 'chosen';
 
         const letterFound = checkLetter(buttonClicked);
 
         if (letterFound === null) {
-            const scoreboard = document.getElementById('scoreboard'); 
+            const scoreboard = document.getElementById('scoreboard');
             const ol = scoreboard.firstElementChild.children; //Get all heart icons
             ol[missed].firstElementChild.src = 'images/lostHeart.png' // Change heart icon on Scoreboard based on miss number
             missed += 1; // Update missed variable
@@ -188,14 +191,14 @@ Function
 @param {string} New button text for Win/Loss Page
 */
 
-function winOrLossOverlay(newClass, headline, buttonText){
+function winOrLossOverlay(newClass, headline, buttonText) {
 
     overlay.className = newClass;
-        const title = document.querySelector('#overlay h2');
-        title.textContent = headline;
-        const button = document.querySelector('#overlay a');
-        button.textContent = buttonText; 
-        overlay.style.display = '';
+    const title = document.querySelector('#overlay h2');
+    title.textContent = headline;
+    const button = document.querySelector('#overlay a');
+    button.textContent = buttonText;
+    overlay.style.display = '';
 
 }
 
